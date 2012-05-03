@@ -30,6 +30,7 @@ app.configure('development', function(){
 
 app.configure('production', function() {
   console.log("production");
+  console.dir(process.env);
   Model.create_connection({
     url: 'https://garrensmith.cloudant.com',
     port: '443',
