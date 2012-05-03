@@ -36,8 +36,8 @@ app.configure('production', function() {
     port: '443',
     db:'jsinsa_prod',
     auth: { 
-        username: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD
+        username: 'deesecendetumandereendle',
+        password: 'g4wS4ojqVrHQPaIES8u2yLHu'
     },
     secure:true,
   });
