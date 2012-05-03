@@ -6,16 +6,18 @@ module.exports = function () {
 
   Session.all(function (err, sessions) {
     if (sessions) {
+      console.log("removing old sessions");
       sessions.forEach(function (session) {
-        session.remove();
+        session.remove(function () {});
       });
     }
   });
 
   Comment.all(function (err, comments) {
     if (comments) {  
+      console.log("removing old comments")
       comments.forEach(function (comment) {
-        comment.remove();
+        comment.remove(function () {});
       });
     }
   });

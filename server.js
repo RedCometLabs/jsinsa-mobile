@@ -30,7 +30,6 @@ app.configure('development', function(){
 
 app.configure('production', function() {
   console.log("production");
-  console.dir(process.env);
   Model.create_connection({
     url: 'https://garrensmith.cloudant.com',
     port: '443',
@@ -59,10 +58,6 @@ app.get('/', function(req, res){
       console.log("session");
       var Session = Model('Session');
       Session.view('allByTime',function (err, sessions) {
-        if ((new Date()).getTimezoneOffset() !== -120) {
-          console.log("fixing timezones");
-          
-        }
 
         sessions.forEach(function (item) {
           item.start_time = new Date(item.start_time).toUTCString();
