@@ -1,0 +1,17 @@
+div(id="programPage",data-role="page")
+  div(data-role="header")
+    a(href="#mainPage", data-role="button", data-icon="back", data-transition="slidefade", data-direction="reverse") Back
+    h1 Agenda
+  div(data-role="content")
+    ul(id="speakerList", data-role="listview",  data-theme="a")
+      li(data-priority="2", data-role="list-divider" ) Saturday 5th May 2012
+      - sessions.forEach(function (session) {
+        - if (new Date(session.start_time).getDay() !== 1) { return;}
+        li
+          p(class="ui-li-aside ui-li-desc")= (new Date(session.start_time)).getUTCHours() + 2 + ":" + ((new Date(session.start_time)).getUTCMinutes() == 0 ? "00" : (new Date(session.start_time)).getUTCMinutes())
+          p(class="ui-li-desc")
+            strong= session.title
+          p= session.speaker
+            
+      -})
+      

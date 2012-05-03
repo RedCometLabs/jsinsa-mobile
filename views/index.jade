@@ -1,0 +1,46 @@
+div(id="mainPage", data-role="page", data-theme="a")
+    div(data-role="content")
+      img#img-logo(class="img-limit",src="/images/jsinsa.png") 
+      
+      ul(id="menuList", data-role="listview")
+        li
+          a(href="#programPage", data-transition="slidefade")
+            h2 Programme
+            p View the schedule for JSinSA 2012
+        li 
+          a(href="#contactPage", data-transition="slidefade")
+            h2 Housekeeping
+            p Contact details and WiFi
+        li 
+          a(href="#commentsPage", data-transition="slidefade")
+            h2 Comments
+            p Add a comment or ask a question
+        li 
+          a(href="#redcometPage", data-transition="slidefade")
+            h2 Red Comet Labs
+            p The team behind this app.
+
+!=partial('program')
+
+!=partial('contact')
+
+!=partial('redcomet')
+
+!=partial('comments')
+
+
+script(type="text/javascript")
+
+  surge.sessions = new surge.SessionCollection();
+  surge.sessions.reset(!{JSON.stringify(mapped)});
+  surge.sessions.each(function (item) {
+    item.set({start_time: localTime(item.get("start_time"))});
+    item.set({end_time: localTime(item.get("end_time"))});
+  });
+
+
+
+        
+          
+          
+  

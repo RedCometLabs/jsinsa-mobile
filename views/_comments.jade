@@ -1,0 +1,33 @@
+div(id="commentsPage",data-role="page")
+  div(data-role="header")
+    a(href="#mainPage", data-role="button", data-icon="back", data-direction="reverse") Back
+    h1 Comments
+  div(data-role="content")
+    h2 Add a comment
+    form(id="commentForm", action="/comment", method="post", data-ajax="false")
+      div(data-role="fieldcontain", class="ui-hide-label")
+        label(for="name") Name:
+        input(type="text", name="comment[name]", id="comment_name", value="", placeholder="Your Name goes here")
+        div(style="margin-bottom:10px")
+        label(for="comment") Name:
+        textarea(name="comment[msg]", id="comment_msg", value="", placeholder="Ask a question or send us a message")
+        button(type="submit") Post Message
+    #comments-display
+      h2 Comments
+        
+      - comments.forEach(function (comment) {
+        div(data-role="collapsible", data-theme="a", data-content-theme="a")
+          h3= comment.name
+          p= comment.msg
+      - });
+
+script(id="commentTemplate", type="text/html")
+  | <div data-role="collapsible" data-theme="a" data-content-theme="a" class="ui-collapsible ui-collapsible-collapsed"><h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a href="#" class="ui-collapsible-heading-toggle ui-btn ui-fullsize ui-btn-icon-left ui-corner-top ui-corner-bottom ui-btn-up-a" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="plus" data-iconpos="left" data-theme="a" data-mini="false"><span class="ui-btn-inner ui-corner-top ui-corner-bottom">
+  | <span class="ui-btn-text">{{name}}
+  | <span class="ui-collapsible-heading-status"> click to expand contents</span></span><span class="ui-icon ui-icon-shadow ui-icon-plus">&nbsp;</span></span></a></h3><div class="ui-collapsible-content ui-body-a ui-collapsible-content-collapsed" aria-hidden="true">
+  | <p>{{msg}}</p></div></div>
+
+script(id="newTemplate", type="text/html")
+  div(data-role="collapsible", data-theme="a", data-content-theme="a")
+    h3 {{name}}
+    p {{msg}}
