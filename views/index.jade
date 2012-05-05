@@ -28,19 +28,3 @@ div(id="mainPage", data-role="page", data-theme="a")
 
 !=partial('comments')
 
-
-script(type="text/javascript")
-
-  surge.sessions = new surge.SessionCollection();
-  surge.sessions.reset(!{JSON.stringify(mapped)});
-  surge.sessions.each(function (item) {
-    item.set({start_time: localTime(item.get("start_time"))});
-    item.set({end_time: localTime(item.get("end_time"))});
-  });
-
-
-
-        
-          
-          
-  
